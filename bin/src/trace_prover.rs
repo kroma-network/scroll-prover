@@ -22,6 +22,11 @@ struct Args {
 }
 
 fn main() {
+    #[cfg(feature = "tachyon")]
+    log::info!("******************************** tachyon ********************************");
+    #[cfg(not(feature = "tachyon"))]
+    log::info!("******************************** not tachyon ********************************");
+
     // Layer config files are located in `./integration/configs`.
     env::set_current_dir("./integration").unwrap();
     let output_dir = init_env_and_log("trace_prover");
